@@ -1,7 +1,7 @@
 # Splunk Importing and Exploring Events
 
 <h2>Description</h2>
-In this SIEM task, I install and reploy a splunk instance. upload multiple indexes, and perform basic SPL (Search Programming Language) to filter within the access.log pcap.  
+In this SIEM task, I install and deployed a splunk instance. uploaded multiple indexes, and performed basic SPL (Search Programming Language) to filter within the access.log file.  
 
 
 <h2>Languages and Utilities Used</h2>
@@ -45,37 +45,37 @@ Using "index=http_sample" to query the index.
 
 <br />
 <br />
-Filtering for the q paramter with the widows user-agent string shows the sql injection attempts with one responding with a differeny byte size than the rest indicating a potentially successfull attempt. 
+Looking in the patterns tab, it shows 2 patterns for GET/POST request with user-agent hydra. 
 
 ![6) patterns already show get and post request](https://github.com/user-attachments/assets/2249aed2-68ad-4b29-ba25-b02aef24a042)
 
 <br />
 <br />
-Word count and timestamp of last line in the challenge log. 
+Filtering for filetypes to not include "login.php" narrows down the logs from 3000+ to 160 events. 
 
 ![7) filtering for not login php shows 160 results](https://github.com/user-attachments/assets/d4939433-d123-478e-b203-33b3c4c2e42a)
 
 <br />
 <br />  
-Using "cut challenge -d " " -f 1 | sort | uniq -c | sort -nr | grep -v " 1 "" to filter out the top 3 unique ips in the log. 
+Filtering for a status code greater than 200 narrows the logs down to 25 events. 
 
 ![8) http status  200](https://github.com/user-attachments/assets/802038ee-4337-4d2b-96fe-3ef1095fcb1c)
 
 <br />
 <br />
-Using "cut challenge.log -d "\"" -f 6 | sort | uniq -c | sort -nc" to filter out the top user-agent strings. I noticed "Widows" user-agent trying to spoof windows. 
+Filtering in Splunk with AND, NOT and OR operators within parenthesis. 
 
 ![9) using boolean operators and order of operators](https://github.com/user-attachments/assets/573716f7-7f26-4b15-97e1-9d5f466fb0a6)
 
 <br />
 <br />
-Filtering fot he "widows" user-agent strings and running the last 3 entries into cyberchef to decode and doing some OSINT shows that this is a sql injectiona ttacking using the q URL parameter. 
+Filtering the clientip to with wildcards. 
 
 ![10) using wildcards](https://github.com/user-attachments/assets/a65a847d-416f-4dc8-9827-14da9f78583f)
 
 <br />
 <br />
-Filtering for the q paramter with the widows user-agent string shows the sql injection attempts with one responding with a differeny byte size than the rest indicating a potentially successfull attempt. 
+Filtering the http_sample with earliest and latest absolute timestamps. 
 
 ![11) using absolute time to filter](https://github.com/user-attachments/assets/6bfe122f-7c04-4327-9fba-2b0d34811771)
 
